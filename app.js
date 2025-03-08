@@ -53,3 +53,13 @@ function sortearAmigo() {
 }
 
 // Funcion para mostrar los resultados en el DOM
+function mostrarResultados(resultados) {
+    const listaResultados = document.getElementById('resultado');
+    listaResultados.innerHTML = ''; // Limpiar la lista de resultados
+
+    resultados.forEach((resultado) => {
+        const li = document.createElement('li'); // Crear un nuevo elemento de lista
+        li.textContent = resultado; // Establecer el texto del elemento
+        listaResultados.appendChild(li); // Agregar el elemento a la lista
+    });
+}
