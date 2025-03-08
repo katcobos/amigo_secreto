@@ -8,25 +8,27 @@ function agregarAmigo() {
     const input = document.getElementById('amigo');
     const nombre = input.value.trim(); // Obtener el valor del input y eliminar espacios en blanco
 
-    if (nombre) { // Verificar que el nombre no esté vacío
-        amigos.push(nombre); // Agregar el nombre al array
-        input.value = ''; // Limpiar el input
-        mostrarAmigos(); // Llamar a la función para mostrar la lista actualizada
-    } else {
-        alert('Por favor, ingresa un nombre válido.'); // Mensaje de error si el input está vacío
+    if (nombre === '') { // Validar la entrada
+        alert('Por favor, inserte un nombre.'); // Mensaje de error si el input está vacío
+        return; // Salir de la función si la validación falla
     }
+
+    amigos.push(nombre); // Actualizar el array de amigos
+    input.value = ''; // Limpiar el campo de entrada
+    mostrarAmigos(); // Llamar a la función para mostrar la lista actualizada
 }
 
 // Funcion para mostrar la lista de amigos en el DOM
 function mostrarAmigos() {
-    const listaAmigos = document.getElementById('listaAmigos');
-    listaAmigos.innerHTML = ''; // Limpiar la lista antes de mostrarla
+    const listaAmigos = document.getElementById('listaAmigos'); // Obtener el elemento de la lista
+    listaAmigos.innerHTML = ''; // Limpiar la lista existente
 
-    amigos.forEach((amigo) => {
+    // Iterar sobre el arreglo amigos
+    for (let i = 0; i < amigos.length; i++) {
         const li = document.createElement('li'); // Crear un nuevo elemento de lista
-        li.textContent = amigo; // Establecer el texto del elemento
+        li.textContent = amigos[i]; // Establecer el texto del elemento
         listaAmigos.appendChild(li); // Agregar el elemento a la lista
-    });
+    };
 }
 
 // Función para sortear un amigo secreto
